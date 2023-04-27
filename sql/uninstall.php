@@ -31,6 +31,9 @@
  */
 $sql = array();
 
+$sql[] = ' ALTER TABLE `'._DB_PREFIX_.'customer` CHANGE `firstname` `firstname` VARCHAR(255)';
+$sql[] = ' ALTER TABLE `'._DB_PREFIX_.'customer` CHANGE `lastname` `lastname` VARCHAR(255)';
+
 foreach ($sql as $query) {
     if (Db::getInstance()->execute($query) == false) {
         return false;

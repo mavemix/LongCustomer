@@ -61,6 +61,8 @@ class LongCustomer extends Module
     {
         Configuration::updateValue('LONGCUSTOMER_LIVE_MODE', false);
 
+        include(dirname(__FILE__).'/sql/install.php');
+
         return parent::install() &&
             $this->registerHook('header') &&
             $this->registerHook('displayBackOfficeHeader');
@@ -69,6 +71,8 @@ class LongCustomer extends Module
     public function uninstall()
     {
         Configuration::deleteByName('LONGCUSTOMER_LIVE_MODE');
+
+        include(dirname(__FILE__).'/sql/uninstall.php');
 
         return parent::uninstall();
     }
